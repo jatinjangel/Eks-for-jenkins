@@ -32,10 +32,10 @@ resource "aws_eks_addon" "eks_addon" {
   addon_name = each.value
   resolve_conflicts_on_update = "PRESERVE"
   timeouts {
-    create = "2m"
+    create = "10m"
   }
 
-  depends_on = [aws_eks_cluster.aws_cluster, aws_iam_role.eks_cluster_role,aws_iam_role_policy_attachment.eks_cluster_role_attachment]
+  depends_on = [aws_eks_node_group.node_group]
   
 }
 
